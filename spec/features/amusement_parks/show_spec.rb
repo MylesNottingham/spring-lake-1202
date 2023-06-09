@@ -16,11 +16,13 @@ RSpec.describe "the amusement park's show page" do
   let!(:mechanic_2) { Mechanic.create!(name: "Kara Smith", years_experience: 11) }
   let!(:mechanic_3) { Mechanic.create!(name: "Christian Bale", years_experience: 5) }
 
-  let!(:ride_mechanic_1) { RideMechanic.create!(ride: ride_1, mechanic: mechanic_1) }
-  let!(:ride_mechanic_2) { RideMechanic.create!(ride: ride_2, mechanic: mechanic_1) }
-  let!(:ride_mechanic_3) { RideMechanic.create!(ride: ride_3, mechanic: mechanic_2) }
-  let!(:ride_mechanic_4) { RideMechanic.create!(ride: ride_4, mechanic: mechanic_2) }
-  let!(:ride_mechanic_5) { RideMechanic.create!(ride: ride_5, mechanic: mechanic_3) }
+  before(:each) do
+    RideMechanic.create!(ride: ride_1, mechanic: mechanic_1)
+    RideMechanic.create!(ride: ride_2, mechanic: mechanic_1)
+    RideMechanic.create!(ride: ride_3, mechanic: mechanic_2)
+    RideMechanic.create!(ride: ride_4, mechanic: mechanic_2)
+    RideMechanic.create!(ride: ride_5, mechanic: mechanic_3)
+  end
 
   context "when on amusement park 1's show page" do
     before(:each) do

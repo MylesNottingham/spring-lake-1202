@@ -13,7 +13,7 @@
 <br/>
 
 <section id="add-ride">
-  <%= form_with(url:ride_mechanics_path(@mechanic), local: true) do |form| %>
+  <%= form_with(url:ride_mechanics_path(@mechanic), method: :post, local: true) do |form| %>
     <%= form.label :ride_id, "Add a ride to workload by Ride ID:" %>
     <%= form.number_field :ride_id, id: "ride_id" %>
     <%= form.hidden_field :mechanic_id, value: @mechanic.id %>
