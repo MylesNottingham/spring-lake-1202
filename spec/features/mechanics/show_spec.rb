@@ -10,10 +10,10 @@ RSpec.describe "the mechanic's show page" do
   let!(:mechanic_1) { Mechanic.create!(name: "Sam Mills", years_experience: 10) }
   let!(:mechanic_2) { Mechanic.create!(name: "Kara Smith", years_experience: 11) }
 
-  let!(:ride_mechanic_1) { RideMechanic.create!(ride: ride_1, mechanic: mechanic_1) }
-  let!(:ride_mechanic_2) { RideMechanic.create!(ride: ride_2, mechanic: mechanic_1) }
-
   before(:each) do
+    RideMechanic.create!(ride: ride_1, mechanic: mechanic_1)
+    RideMechanic.create!(ride: ride_2, mechanic: mechanic_1)
+
     visit mechanic_path(mechanic_1)
   end
 
@@ -37,6 +37,8 @@ RSpec.describe "the mechanic's show page" do
   end
 
   it "displays a form to add a ride to the mechanic's workload by ride id" do
+    expect(page).not_to have_content(ride_3.name)
+
     within("#add-ride") do
       expect(page).to have_content("Add a ride to workload by Ride ID:")
       expect(page).to have_field(:ride_id)
